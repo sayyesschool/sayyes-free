@@ -1,0 +1,400 @@
+$desktop-size: 1024px;
+$tablet-size: 768px;
+$mobile-size: 425px;
+
+@mixin for-mobile() {
+    @media (max-width: $mobile-size) {
+        @content;
+    }
+}
+
+@mixin for-tablet() {
+    @media (min-width: $tablet-size + 1) and (max-width: $desktop-size - 1) {
+        @content;
+    }
+}
+
+@mixin for-desktop() {
+    @media (min-width: $desktop-size) {
+        @content;
+    }
+}
+
+.page {
+    &.target-woman {
+        #header {
+            background-image: url('../img/woman-hero.jpg');
+            background-position: center left;
+        }
+        
+        #signup {
+            .background-image {
+                background-image: url('../img/woman-cant-speak.jpg');
+            }
+        }
+    }
+
+    &.target-man {
+        #header {
+            background-image: url('../img/man-hero.jpg');
+            background-position: center right;
+        }
+    
+        #signup {
+            .background-image {
+                background-image: url('../img/man-cant-speak.jpg');
+            }
+        }
+    }
+
+    @include for-mobile() {
+        padding-bottom: 60px;
+    }
+
+    @include for-desktop() {
+        padding-bottom: 0;
+    }
+}
+
+#header {
+    position: relative;
+    text-align: center;
+    background-image: url('../img/woman-hero.jpg');
+    background-position: left center;
+    background-size: cover;
+    z-index: 1;
+
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        background-color: rgba(0, 0, 0, .5);
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+
+    .typography {
+        color: white;
+    }
+
+    .hero-head {
+        color: white;
+        background: linear-gradient(to bottom,
+            rgba(0, 0, 0, .9) 0%,
+            rgba(0, 0, 0, 0) 100%
+        );
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1024px;
+            padding: 1rem 2rem;
+        }
+
+        img {
+            max-width: 172px;
+        }
+
+        .phone {
+            font-size: 13px;
+            color: inherit;
+
+            &:hover {
+                background-color: rgba(255, 255, 255, .1);
+            }
+        }
+
+        .whatsapp-button {
+            display: none;
+        }
+
+        @include for-desktop() {
+            img {
+                max-width: 220px;
+            }
+
+            .phone {
+                font-size: 16px;
+            }
+
+            .whatsapp-button {
+                display: inline-block;
+                text-transform: none;
+            }
+        }
+    }
+
+    .hero-body {
+        padding: 1rem 1rem 5rem;
+
+        @media (min-width: $desktop-size) {
+            padding: 0rem 1rem 1rem;
+
+            .typography {
+                font-size: 1.9rem;
+                font-weight: normal;
+            }
+        }
+    }
+
+    .hero-foot {
+        margin-top: auto;
+        width: 100%;
+        padding: 8rem 1rem 1rem;
+        background: linear-gradient(to top,
+            rgba(0, 0, 0, .7) 0%,
+            rgba(0, 0, 0, 0) 100%
+        );
+
+        .typography {
+            font-size: 1.3rem;
+            font-weight: bold;
+
+            span {
+                padding: 0 .25em .2em;
+                border-radius: 5px;
+                background-color: rgba(108, 22, 123, .6);
+            }
+        }
+
+        .button {
+            display: none;
+        }
+
+        @media (min-width: $desktop-size) {
+            padding: 12rem 1rem 2rem;
+
+            .typography {
+                font-size: 2rem;
+            }
+
+            .button {
+                display: block;
+                margin-top: 2rem;
+            }
+        }
+    }
+}
+
+#signup {
+    padding-bottom: 0;
+
+    @include for-desktop() {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    
+    .background-image {
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-size: cover;
+        background-position: center;
+        margin-top: 2rem;
+        margin-left: -1rem;
+        margin-right: -1rem;
+        background-color: lightgray;
+        background-image: url('../img/cant-speak.png');
+        background-repeat: no-repeat;
+        background-position: center bottom;
+        background-size: auto 280px;
+
+        p {
+            color: #363636;
+            margin: 0;
+            padding: 1rem;
+
+            &.top {
+                padding-bottom: 4rem;
+                background: linear-gradient(to bottom, 
+                    rgba(0,0,0,0.6) 0%,
+                    rgba(0,0,0,0) 100%
+                );
+            }
+
+            &.bottom {
+                padding-top: 4rem;
+                background: linear-gradient(to top,
+                    rgba(0,0,0,0.6) 0%,
+                    rgba(0,0,0,0) 100%
+                );
+            }
+        }
+
+        @include for-mobile() {
+            background-size: auto 200px;
+        }
+    
+        @include for-desktop() {
+            width: 100%;
+            max-width: 100%;
+            height: 480px;
+            background-size: auto 400px;
+    
+            p {
+                font-size: 1.25rem;
+            }
+        }
+    }
+}
+
+#details {
+    .lead {
+        margin-bottom: 2rem;
+    }
+}
+
+#about {
+    padding-bottom: 0;
+}
+
+#gallery {
+    background-color: #ede1e1;
+    background-image: url('../img/pattern.png');
+    background-size: 256px;
+
+    @include for-mobile() {
+        padding-bottom: 0;
+    }
+
+    .carousel {
+        max-width: 640px;
+        margin: auto;
+
+        @include for-mobile() {
+            margin-left: -1rem;
+            margin-right: -1rem;
+        }
+
+        .slick-slide {
+            text-align: center;
+
+            img {
+                display: inline-block;
+            }
+        }
+    }
+}
+
+#video {
+    padding-bottom: 0;
+
+    .video {
+        position: relative;
+        display: block;
+        margin-top: 2rem;
+        margin-left: -1rem;
+        margin-right: -1rem;
+        padding: 0;
+        overflow: hidden;
+
+        @media (min-width: $desktop-size) {
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        &:before {
+            content: "";
+            display: block;
+            padding-top: 56.25%;
+        }
+
+        iframe {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    }
+}
+
+#contacts {
+    .media-list {
+        max-width: 425px;
+
+        .media {
+            .icon {
+                .fa {
+                    font-size: 2rem;
+                }
+
+                svg {
+                    width: 32px;
+
+                    path {
+                        fill: dodgerblue;
+                    }
+                }
+            }
+        }
+    }
+}
+
+#lesson {
+    .info-block:last-of-type {
+        margin-bottom: 0;
+    }
+}
+
+#form {
+    background-color: #ede1e1;
+
+    .title {
+        margin-bottom: 1rem;
+    }
+
+    form {
+        max-width: 400px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #timer {
+        margin-top: 2rem;
+
+        .tag {
+            margin-top: 1rem;
+        }
+    }
+}
+
+#footer {
+    background-color: #343434;
+    color: white;
+    text-align: center;
+
+    .title,
+    .subtitle {
+        color: white;
+    }
+
+    .button {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+}
+
+.call-to-action.call-to-action--fixed {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-width: initial;
+    z-index: 100;
+    box-shadow: 0 0px 6px 4px rgba(0,0,0,.2);
+    border-radius: 0;
+
+    @media (min-width: $desktop-size) {
+        display: none;
+    }
+}
