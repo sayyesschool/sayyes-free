@@ -1,19 +1,20 @@
 <?php
 
-$name = $_POST['name'];
-$phone = $_POST['phone'];
-$utm_source = $_POST['utm_source'];
-$utm_medium = $_POST['utm_medium'];
-$utm_campaign = $_POST['utm_campaign'];
-$utm_content = $_POST['utm_content'];
+$data = json_decode(file_get_contents('php://input'), true);
 
 $message = '<html><body style="font-family: sans-serif">';
-$message .= '<div><b>Имя:</b> ' . $name . '</div>';
-$message .= '<div><b>Телефон:</b> ' . $phone . '</div>';
-$message .= '<div><b>UTM Source:</b> ' . $utm_source . '</div>';
-$message .= '<div><b>UTM Medium:</b> ' . $utm_medium . '</div>';
-$message .= '<div><b>UTM Campaign:</b> ' . $utm_campaign . '</div>';
-$message .= '<div><b>UTM Content:</b> ' . $utm_content . '</div>';
+$message .= '<div><b>Имя:</b> ' . $data['name'] . '</div>';
+$message .= '<div><b>Телефон:</b> ' . $data['phone'] . '</div>';
+
+if (isset($data['utm_source']))
+    $message .= '<div><b>UTM Source:</b> ' . $data['utm_source'] . '</div>';
+if (isset($data['utm_medium']))
+    $message .= '<div><b>UTM Medium:</b> ' . $data['utm_medium'] . '</div>';
+if (isset($data['utm_campaign']))
+    $message .= '<div><b>UTM Campaign:</b> ' . $data['utm_campaign'] . '</div>';
+if (isset($data['utm_content']))
+    $message .= '<div><b>UTM Content:</b> ' . $data['utm_content'] . '</div>';
+
 $message .= '</body></html>';
 
 $headers = "MIME-Version: 1.0\r\n";
@@ -23,6 +24,8 @@ $headers .= "X-Mailer: E-mail from sayes website \r\n";
 
 mail('info@sayes.ru', 'Заявка на пробный урок с мобильного лэнда', $message, $headers);
 
-header('Location: /thank-you.php');
+header('Content-Type: application/json');
+
+echo json_encode(['ok' => true]);
 
 exit;

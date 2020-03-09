@@ -1,5 +1,4 @@
 <?php
-$target = isset($_GET['t']) ? $_GET['t'] : null;
 $utm_source = isset($_GET['utm_source']) ? $_GET['utm_source'] : null;
 $utm_medium = isset($_GET['utm_medium']) ? $_GET['utm_medium'] : null;
 $utm_campaign = isset($_GET['utm_campaign']) ? $_GET['utm_campaign'] : null;
@@ -19,6 +18,8 @@ $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : null;
 
         <link rel="icon" href="./img/favicon-32x32.png" sizes="32x32">
         <link rel="icon" href="./img/favicon-192x192.png" sizes="192x192">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css">
         <link rel="stylesheet" href="./css/index.css">
 
         <?php include './includes/yandex-metrika.php' ?>
@@ -27,14 +28,14 @@ $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : null;
         <?php include './includes/roistat.php' ?>
     </head>
 
-    <body class="page<?= isset($target) ? ' target-'.$target : '' ?>">
+    <body class="page">
         <header id="header" class="hero">
             <div class="hero-head">
                 <div class="container">
                     <img src="./img/sayyes-logo.png">
 
                     <div class="buttons">
-                        <a class="button phone is-text" href="tel:74996505347">
+                        <a class="button phone-button is-text" href="tel:74996505347">
                             <span class="roistat-phone">+7 499 650-53-47</span>
                         </a>
 
@@ -49,38 +50,42 @@ $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : null;
             </div>
 
             <div class="hero-body">
-                <h1 class="typography title">Бесплатный урок английского языка<br>в Москве или по Скайп</h1>
+                <h1 class="typography title">Бесплатный урок английского в Москве</h1>
             </div>
 
             <div class="hero-foot">
-                <p class="typography">Воспользуйся шансом заговорить на английском по методу<br><span class="rounded">«Английский до автоматизма»</span></p>
+                <p class="typography">Запишитесь прямо сейчас и получите видео-инструкцию<br><span class="rounded">«Как быстро начать понимать речь носителя»</span><br>в подарок!</p>
 
-                <a href="#form" class="button is-medium is-danger is-fullwidth call-to-action">Записаться на бесплатный урок</a>
+                <a href="#form" class="button is-large is-danger call-to-action">Записаться на урок и получить подарок</a>
             </div>
         </header>
 
-        <main>
-            <section id="signup" class="section has-text-centered">
-                <h2 class="title">Наш бесплатный урок однозначно для вас, если вы:</h2>
+        <main id="content">
+            <section id="persona" class="section has-text-centered">
+                <h2 class="title">Узнаете себя?</h2>
 
                 <div class="media-list">
                     <?php
                         $items = [
                             [
-                                'image' => 'zipper-mouth-face.png',
-                                'text' => 'Не говорите на английском или говорите с ошибками'
+                                'image' => 'flag-for-united-kingdom.png',
+                                'text' => 'Ваша самая длинная фраза на английском – "London is the capital of Great Britain"'
                             ],
                             [
-                                'image' => 'shocked-face-with-exploding-head.png',
-                                'text' => 'С трудом понимаете речь носителей'
+                                'image' => 'world-map.png',
+                                'text' => 'Вам стыдно "объясняться на пальцах" и неприятно осознавать ограниченность в путешествиях'
                             ],
                             [
-                                'image' => 'grimacing-face.png',
-                                'text' => 'Не знаете, как правильно строить предложения'
+                                'image' => 'television.png',
+                                'text' => 'Вы хотели бы наслаждаться фильмами и сериалами в оригинале, но не можете выдержать и 10 минут'
                             ],
                             [
-                                'image' => 'face-without-mouth.png',
-                                'text' => 'Понимаете, что говорят вам, но ответить не можете'
+                                'image' => 'money-with-wings.png',
+                                'text' => 'Ваша цель – высокооплачиваемая и интересная должность, но в резюме нет пункта «Свободный английский»'
+                            ],
+                            [
+                                'image' => 'statue-of-liberty.png',
+                                'text' => 'Вы думали над переездом заграницу или зимовкой на Бали, но останавливает отсутствие английского'
                             ]
                         ];
                     ?>
@@ -98,28 +103,52 @@ $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : null;
                     <?php endforeach; ?>
                 </div>
 
-                <div class="background-image">
-                    <p>А еще вы, возможно, учили английский годами: в школе, в институте, на курсах...<br>...но так и не владеете им свободно! =(</p>
+                <p class="lead">Почему же мы учим язык годами, но так и не говорим свободно?</p>
+            </section>
+
+            <section id="problem" class="section">
+                <div class="container">
+                    <h2 class="title section-title">Что мы делаем не так, изучая язык:</h2>
+
+                    <div class="columns">
+                        <div class="column">
+                            <img class="image" src="./img/confused-girl.jpg">
+                        </div>
+
+                        <div class="column">
+                            <p><strong>Устаревшая методика.</strong> На уроке вас просят заполнять пропуски, «раскрывать скобочки», либо читать текст по очереди. Вы знаете теорию, но не можете применять ее на практике.</p> 
+
+                            <p><strong>Мало практики говорения.</strong> БОльшую часть урока вещает преподаватель. Вы опять не учитесь говорить.</p> 
+
+                            <p><strong>Потеря мотивации.</strong> Вы только учите и учите, но реальный результат не ощущаете. Если нет ощущения свободы владения языком, то и желание учиться дальше постепенно исчезает.</p>
+
+                            <p class="lead">Что же делать, чтобы наконец заговорить?</p>
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            <section id="details" class="section">
-                <h2 class="title section-title">Почему же мы учим язык со школы, но так и не говорим?</h2>
+            <section id="solution" class="section">
+                <h2 class="title section-title">Приходите на бесплатный пробный урок в школу SAY YES! и узнайте:</h2>
 
                 <div class="media-list">
                     <?php
                         $items = [
                             [
-                                'image' => 'open-book.png',
-                                'text' => 'В школе нас учили читать и писать, но не говорить'
+                                'image' => 'female-teacher.png',
+                                'text' => 'Что такое метод Fluency drill и как он поможет вам <strong>заговорить «на автомате»</strong>.'
                             ],
                             [
-                                'image' => 'female-student.png',
-                                'text' => 'В институте нам чаще всего было не до английского =)'
+                                'image' => 'public-address-loudspeaker.png',
+                                'text' => 'Каким образом мы обеспечиваем вам <strong>80 % практики языка</strong> на уроке.'
                             ],
                             [
-                                'image' => 'memo.png',
-                                'text' => 'Большинство курсов и репетиторов учат по устаревшим методикам - вы выполняете множество письменных упражнений, а говорите мало'
+                                'image' => 'flag-for-united-states.png',
+                                'text' => 'Как мы преодолеваем ваш барьер в говорении <strong>визитами носителей языка</strong>.'
+                            ],
+                            [
+                                'image' => 'house-with-garden.png',
+                                'text' => 'Почему нас называют <strong>«вторым домом»</strong>, а иногда «сектой».'
                             ]
                         ];
                     ?>
@@ -136,47 +165,123 @@ $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : null;
                         </div>
                     <?php endforeach; ?>
                 </div>
-
-                <p class="lead has-text-centered">А чтобы свободно заговорить английском, нужна <strong class="text-uppercase">практика! говорить, много говорить</strong><br>пока вы не начнёте делать это не задумываясь, <br><strong class="text-uppercase">"на автомате"!</strong></p>
+                
+                <p class="lead has-text-centered">Вы побываете на пробном уроке в реальной группе, увидите,<br>как занимаются наши студенты и познакомитесь с потенциальным преподавателем.</p>
             </section>
 
-            <section id="details" class="section section-dark">
-                <h2 class="title">Именно на это направлена наша методика<br><span class="has-text-danger">«Английский до автоматизма»</span></h2>
+            <section id="offer" class="section section-dark">
+                <h2 class="title">Запишитесь прямо сейчас и получите видео-инструкцию<br><span class="has-text-danger">«Как быстро начать понимать речь носителя»</span><br>в подарок!</h2>
 
-                <div class="media-list">
-                    <?php
-                        $items = [
-                            [
-                                'image' => 'speech-balloon.png',
-                                'text' => 'Вы <strong>практикуете</strong> английскую речь с напарниками <strong>80% урока</strong>'
-                            ],
-                            [
-                                'image' => 'speaking-head-in-silhouette.png',
-                                'text' => 'Многократно <strong>повторяете конструкции и новые слова</strong>, чтобы они в нужный момент вылетали на автомате – и все это <strong>в игровой форме!</strong>'
-                            ],
-                            [
-                                'image' => 'speak-no-evil-monkey.png',
-                                'text' => 'Преодолеваете языковой барьер во время <strong>визита носителей языка</strong> в классы (наша УНИКАЛЬНАЯ фишка!)'
-                            ]
-                        ];
-                    ?>
+                <a href="#form" class="button is-danger is-medium call-to-action">Записаться на урок и получить подарок</a>
+            </section>
 
-                    <?php foreach($items as $item): ?>
-                        <div class="media">
-                            <div class="media-left">
-                                <img class="image" src="./img/emoji/<?= $item['image'] ?>">
+            <section id="audience" class="section">
+                <div class="container">
+                    <h2 class="title">Наш бесплатный урок для тех, кто:</h2>
+
+                    <div class="media-list">
+                        <?php
+                            $items = [
+                                [
+                                    'image' => 'face-without-mouth.png',
+                                    'text' => '<strong>Боится</strong> говорить на английском'
+                                ],
+                                [
+                                    'image' => 'persevering-face.png',
+                                    'text' => '<strong>Не запоминает</strong> слова '
+                                ],
+                                [
+                                    'image' => 'shocked-face-with-exploding-head.png',
+                                    'text' => '<strong>Путается</strong> в правилах и временах'
+                                ],
+                                [
+                                    'image' => 'flushed-face.png',
+                                    'text' => '<strong>Стесняется</strong> своего произношения'
+                                ],
+                                [
+                                    'image' => 'face-with-open-mouth-and-cold-sweat.png',
+                                    'text' => '<strong>Не понимает</strong> речь носителя на слух'
+                                ],
+                                [
+                                    'image' => 'zipper-mouth-face.png',
+                                    'text' => 'Учит язык годами, но так и <strong>не говорит</strong>'
+                                ]
+                            ];
+                        ?>
+
+                        <?php foreach ($items as $item): ?>
+                            <div class="media">
+                                <div class="media-content">
+                                    <img class="image" src="./img/emoji/<?= $item['image'] ?>">
+
+                                    <p class="text"><?= $item['text'] ?></p>
+                                </div>
                             </div>
-
-                            <div class="media-content">
-                                <p class="typography"><?= $item['text'] ?></p>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
+            </section>
 
-                <p class="lead has-text-centered">Запишитесь на бесплатный урок и попробуйте нашу методику!</p>
+            <section id="lesson" class="section">
+                <div class="container">
+                    <h2 class="title section-title">Как проходит обучение?</h2>
 
-                <a href="#form" class="button is-danger is-fullwidth call-to-action">Записаться на бесплатный урок</a>
+                    <div class="media-list">
+                        <?php
+                            $items = [
+                                [
+                                    'image' => 'speaking-head-in-silhouette.png',
+                                    'primary' => 'Практикуем общение',
+                                    'secondary' => 'Вы очень, очень много говорите с преподавателем, чтобы ваш английский стал по-настоящему свободным и непринужденным.'
+                                ],
+                                [
+                                    'image' => 'flag-for-united-kingdom.png',
+                                    'primary' => 'Преподаем Живой английский',
+                                    'secondary' => 'Вы занимаетесь по учебникам Touchstone (Кембридж), выполняете интерактивные задания и смотрите видео с субтитрами.'
+                                ],
+                                [
+                                    'image' => 'information-desk-person.png',
+                                    'primary' => 'Подбираем программу под вас',
+                                    'secondary' => 'Деловой английский или для путешествий? С русскоговорящем преподавателем или с носителем? Интенсив или курс выходного дня?  - Мы учтем все особенности.'
+                                ],
+                                [
+                                    'image' => 'memo.png',
+                                    'primary' => 'Используем авторскую методику',
+                                    'secondary' => 'Наша методика Fluency Drill гарантированно позволяет преодолеть языковой барьер и чувствовать себя свободно.'
+                                ],
+                                [
+                                    'image' => 'female-teacher.png',
+                                    'primary' => 'Проводим разговорные клубы',
+                                    'secondary' => 'Чтобы вы могли еще больше практиковать навыки общения, почувствовать уверенность в себе, и просто получить положительные эмоции.'
+                                ],
+                                [
+                                    'image' => 'money-bag.png',
+                                    'primary' => 'Предлагаем гибкую систему оплаты',
+                                    'secondary' => 'Для вашего удобства мы используем пакетную систему оплаты с возможностью переноса и заморозки занятий.'
+                                ]
+                            ];
+                        ?>
+
+                        <?php foreach($items as $item): ?>
+                            <div class="media">
+                                <div class="media-left">
+                                    <img class="image" src="./img/emoji/<?= $item['image'] ?>">
+                                </div>
+
+                                <div class="media-content">
+                                    <p><strong><?= $item['primary'] ?></strong></p>
+                                    <p><?= $item['secondary'] ?></p>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </section>
+
+            <section id="offer" class="section section-dark">
+                <h2 class="title">Запишитесь прямо сейчас и получите видео-инструкцию<br><span class="has-text-danger">«Как быстро начать понимать речь носителя»</span><br>в подарок!</h2>
+
+                <a href="#form" class="button is-danger is-medium call-to-action">Записаться на урок и получить подарок</a>
             </section>
 
             <section id="about" class="section">
@@ -215,7 +320,11 @@ $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : null;
                     <?php endforeach; ?>
                 </div>
 
-                <p class="lead has-text-centered">Дважды становились победителями Премии <strong>«Эксперт Года»</strong> рейтинга курсов Schoolrate:</p>
+                <div class="box">
+                    <img class="image" src="https://sayes.ru/wp-content/uploads/2019/12/Skype_Picture_2019_12_04T14_01_35_057Z-e1575469459492.jpeg">
+                </div>
+
+                <p class="lead has-text-centered">Четыре раза становились победителями Премии <strong>«Эксперт Года»</strong> рейтинга курсов Schoolrate:</p>
 
                 <div class="media-list">
                     <?php
@@ -227,6 +336,14 @@ $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : null;
                             [
                                 'image' => 'trophy.png',
                                 'text' => 'За <strong>лучшие языковые мероприятия</strong> для студентов (2018 г.)'
+                            ],
+                            [
+                                'image' => 'trophy.png',
+                                'text' => '<strong>Методика года</strong> за метод «Английский до автоматизма» (2019 г.)'
+                            ],
+                            [
+                                'image' => 'trophy.png',
+                                'text' => '<strong>WEB–доверие</strong> за самую лояльную публику в Интернет (2019 г.)'
                             ]
                         ];
                     ?>
@@ -244,18 +361,82 @@ $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : null;
                     <?php endforeach; ?>
                 </div>
             </section>
-            
-            <section id="gallery" class="section">
-                <h2 class="title">Несколько фото из нашего Инстаграма</h2>
 
-                <div class="carousel">
-                    <div class="carousel-inner">
-                        <?php foreach(range(1, 10) as $number): ?>
-                            <div>
-                                <img class="img-fluid" src="./img/photos/<?= $number ?>.jpg" alt="">
-                            </div>
-                        <?php endforeach ?>
-                    </div>
+            <section id="teachers" class="section">
+                <h2 class="title">Наши харизматичные и профессиональные преподаватели</h2>
+
+                <div class="media-list">
+                    <?php
+                        $items = [
+                            [
+                                'first_name' => 'Марта',
+                                'last_name' => 'Филипоненко',
+                                'image_src' => 'https://sayes.ru/wp-content/uploads/2016/02/Филипоненко-мини.png',
+                                'video_src' => 'https://www.youtube.com/watch?v=MG3tBxJmjZM'
+                            ],
+                            [
+                                'first_name' => 'Роман',
+                                'last_name' => 'Сорочук',
+                                'image_src' => 'https://sayes.ru/wp-content/uploads/2016/02/sq-1.jpg',
+                                'video_src' => 'https://www.youtube.com/watch?v=Tq0SC1ls_n0'
+                            ],
+                            [
+                                'first_name' => 'Алиса',
+                                'last_name' => 'Алиева',
+                                'image_src' => 'https://sayes.ru/wp-content/uploads/2018/12/%D0%B0%D0%BB%D0%B8%D0%B5%D0%B2%D0%B0-%D0%BC%D0%B8%D0%BD%D0%B8-300x300.png',
+                                'video_src' => 'https://www.youtube.com/watch?v=-z-JUCn1VB0'
+                            ],
+                            [
+                                'first_name' => 'Сабина',
+                                'last_name' => 'Шейхова',
+                                'image_src' => 'https://sayes.ru/wp-content/uploads/2016/02/ae4C36OxL24-2.jpg',
+                                'video_src' => 'https://www.youtube.com/watch?v=nbHaB0f1avc'
+                            ],
+                            [
+                                'first_name' => 'Екатерина',
+                                'last_name' => 'Иванова',
+                                'image_src' => 'https://sayes.ru/wp-content/uploads/2019/04/%D0%98%D0%B2%D0%B0%D0%BD%D0%BE%D0%B2%D0%B0-%D0%BC%D0%B8%D0%BD%D0%B8-300x300.png',
+                                'video_src' => 'https://www.youtube.com/watch?v=Asyra1y02hU'
+                            ],
+                            [
+                                'first_name' => 'Полина',
+                                'last_name' => 'Ангаткина',
+                                'image_src' => 'https://sayes.ru/wp-content/uploads/2018/12/WhatsApp-Image-2018-12-06-at-17.18.23-e1562064170136-300x300.jpeg',
+                                'video_src' => 'https://www.youtube.com/watch?v=mAk5aP2rFJw'
+                            ],
+                            [
+                                'first_name' => 'Мария',
+                                'last_name' => 'Наливайкина',
+                                'image_src' => 'https://sayes.ru/wp-content/uploads/2017/09/%D0%9D%D0%B0%D0%BB%D0%B8%D0%B2%D0%B0%D0%B8%CC%86%D0%BA%D0%B8%D0%BD%D0%B0-%D0%BC%D0%B8%D0%BD%D0%B8-300x300.png',
+                                'video_src' => 'https://www.youtube.com/watch?v=GErPVsS9vbA'
+                            ],
+                            [
+                                'first_name' => 'Damjan',
+                                'last_name' => 'Gogovski',
+                                'image_src' => 'https://sayes.ru/wp-content/uploads/2019/04/%D0%94%D0%B0%D0%BC%D1%8C%D1%8F%D0%BD-%D0%BC%D0%B8%D0%BD%D0%B8-300x300.png',
+                                'video_src' => 'https://www.youtube.com/watch?v=h0LmnaQT-KM'
+                            ],
+                            [
+                                'first_name' => 'Лусине',
+                                'last_name' => 'Гумашян',
+                                'image_src' => 'https://sayes.ru/wp-content/uploads/2019/08/%D0%9B%D1%8E%D1%81%D0%B8-%D0%BC%D0%B8%D0%BD%D0%B8-300x300.png',
+                                'video_src' => 'https://www.youtube.com/watch?v=xcpaDyu9qlk'
+                            ]
+                        ];
+                    ?>
+
+                    <?php foreach ($items as $item): ?>
+                        <div class="media">
+                            <a class="card" href="<?= $item['video_src'] ?>"  data-fancybox data-width="640" data-height="360">
+                                <img class="card-image" src="<?= $item['image_src'] ?>" alt="Фото <?= $item['first_name'] . ' ' . $item['last_name'] ?>">
+
+                                <div class="card-content">
+                                    <span class="title"><?= $item['first_name'] ?></span>
+                                    <span class="subtitle"><?= $item['last_name'] ?></span>
+                                </div>
+                            </a>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </section>
 
@@ -266,7 +447,7 @@ $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : null;
 
                 <p class="lead has-text-centered">Посмотрите не просто отзывы наших студентов, а то, как они <strong>говорят на английском</strong>:</p>
 
-                <div class="video">
+                <div class="box video">
                     <iframe src="https://player.vimeo.com/video/319753562" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
                 </div>
             </section>
@@ -329,56 +510,13 @@ $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : null;
                     </div>
                 </div>
 
-                <a href="#form" class="button is-danger is-fullwidth call-to-action">Записаться на бесплатный урок</a>
-            </section>
-
-            <section id="lesson" class="section section-dark">
-                <h2 class="title">На бесплатном уроке вы:</h2>
-
-                <div class="media-list">
-                    <?php
-                        $items = [
-                            [
-                                'image' => 'white-heavy-check-mark.png',
-                                'text' => 'Определите свой уровень и проблемные места'
-                            ],
-                            [
-                                'image' => 'information-desk-person.png',
-                                'text' => 'Посетите пробный урок в группе вашего уровня'
-                            ],
-                            [
-                                'image' => 'flag-for-united-kingdom.png',
-                                'text' => 'Узнаете, как наша методика поможет вам заговорить'
-                            ],
-                            [
-                                'image' => 'female-teacher.png',
-                                'text' => 'Познакомитесь с вашим потенциальным преподавателем'
-                            ],
-                            [
-                                'image' => 'house-building.png',
-                                'text' => 'Узнаете, почему нашу школу называют «вторым домом»'
-                            ]
-                        ];
-                    ?>
-
-                    <?php foreach ($items as $item): ?>
-                        <div class="media">
-                            <div class="media-left">
-                                <img class="image" src="./img/emoji/<?= $item['image'] ?>">
-                            </div>
-
-                            <div class="media-content">
-                                <p><?= $item['text'] ?></p>
-                            </div>
-                        </div>
-                    <?php endforeach ?>
-                </div>
+                <a href="#form" class="button is-danger is-medium call-to-action">Записаться на урок и получить подарок</a>
             </section>
 
             <section id="form" class="section">
                 <h2 class="title">Регистрация на бесплатный урок</h2>
 
-                <p class="subtitle">Оставьте заявку до конца дня <?= date("d.m") ?>, и мы <span class="text-danger font-weight-bold">подарим два урока</span> к вашему курсу!</p>
+                <p class="subtitle">Оставьте заявку до конца дня <?= date("d.m") ?>, и вы получите видео-инструкцию<br><span class="has-text-danger has-text-weight-bold is-size-5">«Как быстро начать понимать речь носителя»</span><br>в подарок!</p>
 
                 <form method="post" action="request.php">
                     <?php if (isset($utm_source)): ?>
@@ -420,7 +558,7 @@ $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : null;
 
                     <div class="field">
                         <div class="control">
-                            <button type="submit" class="button is-primary is-fullwidth">Оставить заявку</button>
+                            <button type="submit" class="button is-primary is-medium is-fullwidth">Оставить заявку</button>
                         </div>
                     </div>
                 </form>
@@ -436,7 +574,7 @@ $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : null;
         <footer id="footer" class="footer section">
             <h2 class="title">Остались вопросы?</h2>
 
-            <p class="subtitle">Если вы хотите узнать более полную информацию о нас, просто позвоните нам!</p>
+            <p class="subtitle">Если вы хотите узнать больше о нашей школе, просто позвоните нам!</p>
 
             <a class="button is-primary is-outlined is-inverted" href="tel:79250916416">
                 <span class="icon">
@@ -456,17 +594,71 @@ $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : null;
 
             <div><a href="https://sayes.ru/politika-konfidentsialnosti/">Политика конфиденциальности</a></div>
         </footer>
+
+        <div id="dialog" class="modal">
+            <div class="modal-background"></div>
+
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Ваша заявка принята</p>
+                    <button class="delete" aria-label="close"></button>
+                </header>
+
+                <section class="modal-card-body">
+                    <p class="lead">Осталось только получить подарок!</p>
+                    <img src="./img/emoji/wrapped-present.png">
+                    <p>Чтобы получить подарок в WhatsApp, пройдите по ссылке и отправьте сообщение с текстом <strong>"хочу подарок"</strong>.</p>
+                </section>
+
+                <footer class="modal-card-foot">
+                    <a class="button is-success" href="https://wa.me/79250916416?text=Хочу%20подарок">Получить подарок</a>
+                </footer>
+            </div>
+        </div>
         
         <a class="button is-danger is-fullwidth call-to-action call-to-action--fixed" href="#form">Оставить заявку и<br>получить два урока в подарок</a>
 
-        <script src="./js/vendor.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
         <script src="https://static.sayes.ru/js/crm.js"></script>
-        <script src="./js/timer.js"></script>
+        <script src="https://static.sayes.ru/js/masked-input.js"></script>
+        <script src="https://static.sayes.ru/js/timer.js"></script>
 
         <script>
             var formElement = document.querySelector('#form');
+            var dialogElement = document.querySelector('#dialog');
             
             $('input[type=tel]').mask('+7 (999) 999-9999');
+
+            document.querySelector('form').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                // ym(YANDEX_METRIKA_COUNTER, 'reachGoal', 'zayavka');
+                // gtag('event', 'click', { event_category: 'zayavka' });
+                // fbq('track', 'Lead');
+                
+                // crm.addStudyRequest({
+                //     type: 'Заявка с мобильного лэнда',
+                //     name: this.elements.name.value,
+                //     phone: this.elements.phone.value
+                // });
+                
+                $.post({
+                    url: 'request.php',
+                    data: JSON.stringify({
+                        name: this.elements.name.value,
+                        phone: this.elements.phone.value,
+                        utm_source: this.elements.utm_source && this.elements.utm_source.value,
+                        utm_medium: this.elements.utm_medium && this.elements.utm_medium.value,
+                        utm_campaign: this.elements.utm_campaign && this.elements.utm_campaign.value,
+                        utm_content: this.elements.utm_content && this.elements.utm_content.value
+                    }),
+                    contentType: 'application/json'
+                }).done(function(data) {
+                    dialogElement.classList.add('is-active');
+                });
+            });
 
             $('.call-to-action').on('click', function (event) {
                 event.preventDefault();
@@ -474,22 +666,10 @@ $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : null;
                 formElement.scrollIntoView({ behavior: 'smooth' });
             });
 
-            document.querySelector('form').addEventListener('submit', function(event) {
-                // ym(YANDEX_METRIKA_COUNTER, 'reachGoal', 'zayavka');
-                // gtag('event', 'click', { event_category: 'zayavka' });
-                fbq('track', 'Lead');
-                
-                crm.addStudyRequest({
-                    type: 'Заявка с мобильного лэнда',
-                    name: this.elements.name.value,
-                    phone: this.elements.phone.value
-                });
-            });
-
             $('.whatsapp-button').click(function() {
                 //ym(YANDEX_METRIKA_COUNTER, 'reachGoal', 'click');
                 //gtag('event', 'click', { event_category: 'click' });
-                fbq('track', 'InitiateCheckout');
+                //fbq('track', 'InitiateCheckout');
                 
                 return true;
             });
@@ -499,6 +679,10 @@ $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : null;
                 prevArrow: '<a class="slick-arrow slick-arrow-prev"><span class="fa fa-angle-left custom-handle"></span></a>',
                 nextArrow: '<a class="slick-arrow slick-arrow-next"><span class="fa fa-angle-right custom-handle"></span></a>',
                 dots: true
+            });
+
+            $('#dialog .delete').click(function() {
+                dialogElement.classList.remove('is-active');
             });
 
             var timerElement = document.querySelector('#timer .tag');
