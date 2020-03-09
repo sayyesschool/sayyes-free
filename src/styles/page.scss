@@ -20,33 +20,19 @@ $mobile-size: 425px;
     }
 }
 
+@mixin for-gt($size) {
+    @media (min-width: $size) {
+        @content;
+    }
+}
+
+@mixin for-lt($size) {
+    @media (max-width: $size) {
+        @content;
+    }
+}
+
 .page {
-    &.target-woman {
-        #header {
-            background-image: url('../img/woman-hero.jpg');
-            background-position: center left;
-        }
-        
-        #signup {
-            .background-image {
-                background-image: url('../img/woman-cant-speak.jpg');
-            }
-        }
-    }
-
-    &.target-man {
-        #header {
-            background-image: url('../img/man-hero.jpg');
-            background-position: center right;
-        }
-    
-        #signup {
-            .background-image {
-                background-image: url('../img/man-cant-speak.jpg');
-            }
-        }
-    }
-
     @include for-mobile() {
         padding-bottom: 60px;
     }
@@ -100,8 +86,16 @@ $mobile-size: 425px;
             max-width: 172px;
         }
 
-        .phone {
-            font-size: 13px;
+        .button {
+            margin: 0;
+
+            + .button {
+                margin-left: 8px;
+            }
+        }
+
+        .phone-button {
+            font-size: 14px;
             color: inherit;
 
             &:hover {
@@ -118,8 +112,10 @@ $mobile-size: 425px;
                 max-width: 220px;
             }
 
-            .phone {
-                font-size: 16px;
+            .phone-button {
+                font-size: 18px;
+                padding-top: 5px;
+                padding-bottom: 6px;
             }
 
             .whatsapp-button {
@@ -132,7 +128,7 @@ $mobile-size: 425px;
     .hero-body {
         padding: 1rem 1rem 5rem;
 
-        @media (min-width: $desktop-size) {
+        @include for-desktop() {
             padding: 0rem 1rem 1rem;
 
             .typography {
@@ -166,7 +162,7 @@ $mobile-size: 425px;
             display: none;
         }
 
-        @media (min-width: $desktop-size) {
+        @include for-desktop() {
             padding: 12rem 1rem 2rem;
 
             .typography {
@@ -174,116 +170,230 @@ $mobile-size: 425px;
             }
 
             .button {
-                display: block;
+                display: inline-block;
                 margin-top: 2rem;
+                max-width: none;
             }
         }
     }
 }
 
-#signup {
+#persona {
+    .lead {
+        position: relative;
+        display: inline-block;
+
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            background-image: url('https://u8.filesonload.ru/s/34qce4051/dae922b126caaef4b80b514cfcea0e1b/2bd187153074fa7752a854d7247617ff.png');
+            background-size: contain;
+            width: 52px;
+            height: 82px;
+            top: 100%;
+            left: 100%;
+        }
+    }
+}
+
+#problem {
+    background-color: #f49fa6;
     padding-bottom: 0;
 
-    @include for-desktop() {
-        padding-left: 0;
-        padding-right: 0;
+    p {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
     }
-    
-    .background-image {
-        height: 300px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        background-size: cover;
-        background-position: center;
+
+    .container {
+        max-width: 1024px;
+    }
+
+    .columns {
+        margin: 0;
+
+        .column {
+            padding: 0;
+        }
+    }
+
+    .image {
+        display: block;
+        max-width: 360px;
+        margin: 2rem 3rem 0 auto;
+    }
+
+    .lead {
+        font-size: 1.5rem;
         margin-top: 2rem;
-        margin-left: -1rem;
-        margin-right: -1rem;
-        background-color: lightgray;
-        background-image: url('../img/cant-speak.png');
-        background-repeat: no-repeat;
-        background-position: center bottom;
-        background-size: auto 280px;
+    }
+}
 
-        p {
-            color: #363636;
-            margin: 0;
-            padding: 1rem;
+#solution {
 
-            &.top {
-                padding-bottom: 4rem;
-                background: linear-gradient(to bottom, 
-                    rgba(0,0,0,0.6) 0%,
-                    rgba(0,0,0,0) 100%
-                );
+}
+
+#offer {
+    text-align: center;
+
+    .button.call-to-action {
+        display: inline-block;
+        max-width: none;
+    }
+}
+
+#audience {
+    background-color: #ede1e1;
+
+    .container {
+        max-width: 1280px;
+    }
+
+    .title {
+        margin-bottom: 3rem;
+    }
+
+    .media-list {
+        max-width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+
+        .media {
+            flex: 1;
+            flex-basis: 20%;
+            padding: 0 1rem;
+
+            .image {
+                margin: 0 auto 1rem;
             }
 
-            &.bottom {
-                padding-top: 4rem;
-                background: linear-gradient(to top,
-                    rgba(0,0,0,0.6) 0%,
-                    rgba(0,0,0,0) 100%
-                );
+            .text {
+                text-align: center;
             }
-        }
 
-        @include for-mobile() {
-            background-size: auto 200px;
-        }
-    
-        @include for-desktop() {
-            width: 100%;
-            max-width: 100%;
-            height: 480px;
-            background-size: auto 400px;
-    
-            p {
-                font-size: 1.25rem;
+            @include for-desktop() {
+                + .media {
+                    margin-top: 0;
+                    padding-top: 0;
+                }
+
+                &:last-child {
+                    margin-top: 2rem;
+                    flex-basis: 100%;
+                }
             }
         }
     }
 }
 
-#details {
-    .lead {
-        margin-bottom: 2rem;
+#lesson {
+    .media-list {
+        @include for-desktop() {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1024px;
+        }
+
+        .media {
+            @include for-desktop() {
+                flex-basis: 50%;
+                margin: 0;
+                padding: 1rem;
+            }
+        }
     }
 }
 
 #about {
-    padding-bottom: 0;
+    .box {
+        max-width: 640px;
+        padding: 0;
+        margin: 2rem auto 2rem;
+        overflow: hidden;
+    }
 }
 
-#gallery {
-    background-color: #ede1e1;
-    background-image: url('../img/pattern.png');
-    background-size: 256px;
+#teachers {
+    background-color: #e8e8e8;
+    
+    .media-list {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 720px;
 
-    @include for-mobile() {
-        padding-bottom: 0;
+        .media {
+            flex: 1;
+            margin: 0;
+            padding: 0;
+            flex-basis: 100%;
+
+            @include for-gt($mobile-size) {
+                flex-basis: 50%;
+            }
+
+            @include for-gt($tablet-size) {
+                flex-basis: 33%;
+            }
+        }
     }
 
-    .carousel {
-        max-width: 640px;
-        margin: auto;
+    .card {
+        position: relative;
+        width: 100%;
+        margin: 8px;
 
-        @include for-mobile() {
-            margin-left: -1rem;
-            margin-right: -1rem;
+        .card-image {
+            width: 100%;
         }
 
-        .slick-slide {
-            text-align: center;
+        .card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,.8));
+            padding: 16px;
+            
+            .title,
+            .subtitle {
+                color: white;
+                font-size: 24px;
+                display: block;
+                margin-bottom: 0;
+                text-align: left;
+            }
+        }
 
-            img {
-                display: inline-block;
+        &::after {
+            content: '▸';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+            color: white;
+            font-size: 128px;
+            opacity: 0;
+            transition: all .3s;
+        }
+
+        &:hover {
+            &::after {
+                opacity: .25;
             }
         }
     }
 }
 
 #video {
-    padding-bottom: 0;
+    background-color: #ede1e1;
+    background-image: url('../img/pattern.png');
+    background-size: 256px;
 
     .video {
         position: relative;
@@ -319,6 +429,8 @@ $mobile-size: 425px;
 }
 
 #contacts {
+    text-align: center;
+    
     .media-list {
         max-width: 425px;
 
@@ -383,6 +495,21 @@ $mobile-size: 425px;
         margin-top: 1rem;
         margin-bottom: 1rem;
     }
+}
+
+#dialog {
+    .modal-card-body {
+        text-align: center;
+
+        img {
+            margin: 1rem 0;
+        }
+    }
+}
+
+.call-to-action {
+    display: inline-block;
+    max-width: none;
 }
 
 .call-to-action.call-to-action--fixed {
