@@ -657,6 +657,7 @@ $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : null;
                     contentType: 'application/json'
                 }).done(function(data) {
                     dialogElement.classList.add('is-active');
+                    formElement.reset();
                 });
             });
 

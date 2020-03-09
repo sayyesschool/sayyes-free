@@ -4,7 +4,7 @@
   "private": true,
   "main": "gulpfile.js",
   "scripts": {
-    "server": "php -S localhost:8000 -t public/",
+    "server": "php -S localhost:8000",
     "dev": "gulp"
   },
   "devDependencies": {
