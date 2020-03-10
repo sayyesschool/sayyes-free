@@ -129,10 +129,9 @@ $mobile-size: 425px;
         padding: 1rem 1rem 5rem;
 
         @include for-desktop() {
-            padding: 0rem 1rem 1rem;
+            padding: 2rem 0;
 
-            .typography {
-                font-size: 1.9rem;
+            .title {
                 font-weight: normal;
             }
         }
@@ -247,11 +246,7 @@ $mobile-size: 425px;
     background-color: #ede1e1;
 
     .container {
-        max-width: 1280px;
-    }
-
-    .title {
-        margin-bottom: 3rem;
+        max-width: 1024px;
     }
 
     .media-list {
@@ -261,8 +256,8 @@ $mobile-size: 425px;
 
         .media {
             flex: 1;
-            flex-basis: 20%;
-            padding: 0 1rem;
+            flex-basis: 50%;
+            padding: 2rem 1rem 3rem;
 
             .image {
                 margin: 0 auto 1rem;
@@ -270,18 +265,6 @@ $mobile-size: 425px;
 
             .text {
                 text-align: center;
-            }
-
-            @include for-desktop() {
-                + .media {
-                    margin-top: 0;
-                    padding-top: 0;
-                }
-
-                &:last-child {
-                    margin-top: 2rem;
-                    flex-basis: 100%;
-                }
             }
         }
     }

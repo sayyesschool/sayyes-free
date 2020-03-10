@@ -54,7 +54,7 @@ $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : null;
             </div>
 
             <div class="hero-foot">
-                <p class="typography">Запишитесь прямо сейчас и получите видео-инструкцию<br><span class="rounded">«Как быстро начать понимать речь носителя»</span><br>в подарок!</p>
+                <p class="typography">Запишитесь на пробный урок и получите видео-инструкцию<br><span class="rounded">«Как быстро начать понимать речь носителя»</span><br>в подарок!</p>
 
                 <a href="#form" class="button is-large is-danger call-to-action">Записаться на урок и получить подарок</a>
             </div>
@@ -170,7 +170,7 @@ $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : null;
             </section>
 
             <section id="offer" class="section section-dark">
-                <h2 class="title">Запишитесь прямо сейчас и получите видео-инструкцию<br><span class="has-text-danger">«Как быстро начать понимать речь носителя»</span><br>в подарок!</h2>
+                <h2 class="title">Запишитесь на пробный урок и получите видео-инструкцию<br><span class="has-text-danger">«Как быстро начать понимать речь носителя»</span><br>в подарок!</h2>
 
                 <a href="#form" class="button is-danger is-medium call-to-action">Записаться на урок и получить подарок</a>
             </section>
@@ -224,7 +224,7 @@ $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : null;
 
             <section id="lesson" class="section">
                 <div class="container">
-                    <h2 class="title section-title">Как проходит обучение?</h2>
+                    <h2 class="title section-title">Как проходит обучение в нашей школе:</h2>
 
                     <div class="media-list">
                         <?php
@@ -279,7 +279,7 @@ $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : null;
             </section>
 
             <section id="offer" class="section section-dark">
-                <h2 class="title">Запишитесь прямо сейчас и получите видео-инструкцию<br><span class="has-text-danger">«Как быстро начать понимать речь носителя»</span><br>в подарок!</h2>
+                <h2 class="title">Запишитесь на пробный урок и получите видео-инструкцию<br><span class="has-text-danger">«Как быстро начать понимать речь носителя»</span><br>в подарок!</h2>
 
                 <a href="#form" class="button is-danger is-medium call-to-action">Записаться на урок и получить подарок</a>
             </section>
@@ -471,12 +471,6 @@ $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : null;
                                 'primary' => 'м. Белорусская (5 мин.)',
                                 'secondary' => 'ул. Большая Грузинская, д. 61c1',
                                 'color' => 'saddlebrown'
-                            ],
-                            [
-                                'icon' => 'fa fa-subway',
-                                'primary' => 'м. Улица 1905 г. (4 мин.)',
-                                'secondary' => 'ул. 2-я Звенигородская, д. 12с1',
-                                'color' => 'purple'
                             ]
                         ];
                     ?>
@@ -509,8 +503,6 @@ $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : null;
                         </div>
                     </div>
                 </div>
-
-                <a href="#form" class="button is-danger is-medium call-to-action">Записаться на урок и получить подарок</a>
             </section>
 
             <section id="form" class="section">
