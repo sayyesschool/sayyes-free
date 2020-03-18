@@ -5,7 +5,7 @@
   "main": "gulpfile.js",
   "scripts": {
     "server": "php -S localhost:8000",
-    "dev": "gulp"
+    "sass": "gulp"
   },
   "devDependencies": {
     "bulma": "^0.8.0",
