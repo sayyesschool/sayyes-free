@@ -626,15 +626,15 @@ $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : null;
             document.querySelector('form').addEventListener('submit', function(event) {
                 event.preventDefault();
 
-                // ym(YANDEX_METRIKA_COUNTER, 'reachGoal', 'zayavka');
-                // gtag('event', 'click', { event_category: 'zayavka' });
-                // fbq('track', 'Lead');
+                ym(YANDEX_METRIKA_COUNTER, 'reachGoal', 'zayavka');
+                gtag('event', 'click', { event_category: 'zayavka' });
+                fbq('track', 'Lead');
                 
-                // crm.addStudyRequest({
-                //     type: 'Заявка с мобильного лэнда',
-                //     name: this.elements.name.value,
-                //     phone: this.elements.phone.value
-                // });
+                crm.addStudyRequest({
+                    type: 'Заявка с мобильного лэнда',
+                    name: this.elements.name.value,
+                    phone: this.elements.phone.value
+                });
                 
                 $.post({
                     url: 'request.php',
@@ -660,9 +660,9 @@ $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : null;
             });
 
             $('.whatsapp-button').click(function() {
-                //ym(YANDEX_METRIKA_COUNTER, 'reachGoal', 'click');
-                //gtag('event', 'click', { event_category: 'click' });
-                //fbq('track', 'InitiateCheckout');
+                ym(YANDEX_METRIKA_COUNTER, 'reachGoal', 'click');
+                gtag('event', 'click', { event_category: 'click' });
+                fbq('track', 'InitiateCheckout');
                 
                 return true;
             });
