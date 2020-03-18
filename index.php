@@ -610,7 +610,7 @@ $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : null;
             </div>
         </div>
         
-        <a class="button is-danger is-fullwidth call-to-action call-to-action--fixed" href="#form">Оставить заявку и<br>получить два урока в подарок</a>
+        <a class="button is-danger is-fullwidth call-to-action call-to-action--fixed" href="#form">Оставить заявку и<br>получить подарок</a>
 
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
