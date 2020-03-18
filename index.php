@@ -620,7 +620,8 @@ $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : null;
         <script src="https://static.sayes.ru/js/timer.js"></script>
 
         <script>
-            var formElement = document.querySelector('#form');
+            var formSection = document.querySelector('#form');
+            var formElement = document.querySelector('#form form');
             var dialogElement = document.querySelector('#dialog');
             
             $('input[type=tel]').mask('+7 (999) 999-9999');
@@ -633,7 +634,7 @@ $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : null;
                 // fbq('track', 'Lead');
                 
                 crm.addStudyRequest({
-                    type: 'Заявка с мобильного лэнда',
+                    type: 'Заявка на пробный урок',
                     name: this.elements.name.value,
                     phone: this.elements.phone.value
                 });
