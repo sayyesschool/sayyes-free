@@ -1,11 +1,13 @@
 <!-- Yandex.Metrika -->
 <script type="text/javascript" >
+    window.YANDEX_METRIKA_COUNTER = 50571868;
+
     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
     m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
     (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-    ym(50571868, "init", {
-        id:50571868,
+    ym(YANDEX_METRIKA_COUNTER, "init", {
+        id:YANDEX_METRIKA_COUNTER,
         clickmap:true,
         trackLinks:true,
         accurateTrackBounce:true,
