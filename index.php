@@ -22,10 +22,12 @@ $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : null;
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css">
         <link rel="stylesheet" href="./css/index.css">
 
-        <?php include './includes/yandex-metrika.php' ?>
-        <?php include './includes/google-analytics.php' ?>
-        <?php include './includes/facebook-pixel.php' ?>
-        <?php include './includes/roistat.php' ?>
+        <?php
+            //include './includes/yandex-metrika.php';
+            //include './includes/google-analytics.php';
+            //include './includes/facebook-pixel.php';
+            //include './includes/roistat.php';
+        ?>
     </head>
 
     <body class="page">
@@ -626,9 +628,9 @@ $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : null;
             document.querySelector('form').addEventListener('submit', function(event) {
                 event.preventDefault();
 
-                ym(YANDEX_METRIKA_COUNTER, 'reachGoal', 'zayavka');
-                gtag('event', 'click', { event_category: 'zayavka' });
-                fbq('track', 'Lead');
+                // ym(YANDEX_METRIKA_COUNTER, 'reachGoal', 'zayavka');
+                // gtag('event', 'click', { event_category: 'zayavka' });
+                // fbq('track', 'Lead');
                 
                 crm.addStudyRequest({
                     type: 'Заявка с мобильного лэнда',
@@ -660,9 +662,9 @@ $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : null;
             });
 
             $('.whatsapp-button').click(function() {
-                ym(YANDEX_METRIKA_COUNTER, 'reachGoal', 'click');
-                gtag('event', 'click', { event_category: 'click' });
-                fbq('track', 'InitiateCheckout');
+                // ym(YANDEX_METRIKA_COUNTER, 'reachGoal', 'click');
+                // gtag('event', 'click', { event_category: 'click' });
+                // fbq('track', 'InitiateCheckout');
                 
                 return true;
             });
