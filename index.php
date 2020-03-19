@@ -23,10 +23,10 @@ $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : null;
         <link rel="stylesheet" href="./css/index.css">
 
         <?php
-            //include './includes/yandex-metrika.php';
+            include './includes/yandex-metrika.php';
             //include './includes/google-analytics.php';
-            //include './includes/facebook-pixel.php';
-            //include './includes/roistat.php';
+            include './includes/facebook-pixel.php';
+            include './includes/roistat.php';
         ?>
     </head>
 
