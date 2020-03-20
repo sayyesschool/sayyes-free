@@ -2,7 +2,13 @@
 
 $data = json_decode(file_get_contents('php://input'), true);
 
+if (empty($data['name']) || empty($data['phone'])) {
+    http_response_code(400);
+    exit;
+}
+
 $message = '<html><body style="font-family: sans-serif">';
+
 $message .= '<div><b>Имя:</b> ' . $data['name'] . '</div>';
 $message .= '<div><b>Телефон:</b> ' . $data['phone'] . '</div>';
 
@@ -22,7 +28,7 @@ $headers .= "Content-Type: text/html; charset=utf-8\r\n";
 $headers .= "From: \"Школа SAY YES!\" <info@sayes.ru>\r\n";
 $headers .= "X-Mailer: E-mail from sayes website \r\n";
 
-mail('info@sayes.ru', 'Заявка на пробный урок', $message, $headers);
+mail('info@sayes.ru', 'Заявка на пробный урок (free.sayes.ru)', $message, $headers);
 
 header('Content-Type: application/json');
 
