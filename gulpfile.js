@@ -10,6 +10,6 @@ function buildSass() {
         .pipe(gulp.dest('./css/'));
 }
 
-gulp.watch('./scss/*.scss', buildSass);
+gulp.watch('./scss/**/*.scss', buildSass);
 
 module.exports.default = buildSass;
