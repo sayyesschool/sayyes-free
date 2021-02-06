@@ -11,6 +11,8 @@
 
         <link rel="icon" href="./img/favicon-32x32.png" sizes="32x32">
         <link rel="icon" href="./img/favicon-192x192.png" sizes="192x192">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css">
         <link rel="stylesheet" href="./css/index.css">
@@ -316,7 +318,7 @@
                 </div>
 
                 <div class="box">
-                    <img class="image" src="https://sayes.ru/wp-content/uploads/2019/12/Skype_Picture_2019_12_04T14_01_35_057Z-e1575469459492.jpeg">
+                    <img class="image" src="https://static.sayes.ru/images/sayyes-awards.jpg">
                 </div>
 
                 <p class="lead has-text-centered">Четыре раза становились победителями Премии <strong>«Эксперт Года»</strong> рейтинга курсов Schoolrate:</p>
@@ -460,12 +462,6 @@
                                 'primary' => 'м. Павелецкая (5 мин.)',
                                 'secondary' => 'ул. Кожевническая, д. 14к1с2',
                                 'color' => 'forestgreen'
-                            ],
-                            [
-                                'icon' => 'fa fa-subway',
-                                'primary' => 'м. Белорусская (5 мин.)',
-                                'secondary' => 'ул. Большая Грузинская, д. 61c1',
-                                'color' => 'saddlebrown'
                             ]
                         ];
                     ?>
