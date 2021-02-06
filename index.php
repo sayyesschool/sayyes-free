@@ -19,7 +19,7 @@
             include './includes/yandex-metrika.php';
             include './includes/google-analytics.php';
             include './includes/facebook-pixel.php';
-            include './includes/roistat.php';
+            // include './includes/roistat.php';
         ?>
     </head>
 
@@ -614,7 +614,7 @@
 
                 ym(YANDEX_METRIKA_COUNTER, 'reachGoal', 'zayavka');
                 gtag('event', 'click', { event_category: 'zayavka' });
-                fbq('track', 'Lead');
+                fbq('track', 'Lead_free');
                 
                 crm.addStudyRequest(data);
                 
