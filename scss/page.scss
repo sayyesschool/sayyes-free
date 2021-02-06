@@ -315,6 +315,10 @@ $mobile-size: 425px;
         padding: 0;
         margin: 2rem auto 2rem;
         overflow: hidden;
+
+        img {
+            width: 100%;
+        }
     }
 }
 

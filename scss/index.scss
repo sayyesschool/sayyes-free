@@ -1,3 +1,4 @@
+$family-sans-serif: 'Nunito', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 $primary: #6c167b;
 $danger: #f5593d;
 
@@ -6,4 +7,3 @@ $danger: #f5593d;
 @import './icons.scss';
 @import './base.scss';
 @import './page.scss';
-@import './thank-you.scss';
