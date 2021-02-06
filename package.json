@@ -1,5 +1,5 @@
 {
-  "name": "sayes-free",
+  "name": "sayyes-free",
   "version": "1.0.0",
   "private": true,
   "main": "gulpfile.js",
@@ -10,7 +10,7 @@
   "devDependencies": {
     "bulma": "^0.8.0",
     "gulp": "^4.0.2",
-    "gulp-sass": "^4.0.2",
-    "node-sass": "^4.13.1"
+    "gulp-sass": "^4.1.0",
+    "sass": "^1.32.6"
   }
 }
